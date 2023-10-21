@@ -1,0 +1,47 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@types/mithril": "github:MithrilJS/mithril.d.ts#next",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.50.0",
+    "postcss": "^8.4.30",
+    "tailwindcss": "^3.3.3",
+    "vite-plugin-eslint": "^1.8.1",
+    "vuex": "^4.0.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "axios": "^1.5.1",
+    "components": "^0.1.0",
+    "default": "^0.1.1",
+    "index": "^0.4.0",
+    "layout": "^2.2.0",
+    "mithril": "^2.2.2",
+    "nuxt": "^3.7.4",
+    "page": "^1.11.6",
+    "pusher-js": "^8.3.0",
+    "vuex-persistedstate": "^4.1.0"
+  },
+  "description": "Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
