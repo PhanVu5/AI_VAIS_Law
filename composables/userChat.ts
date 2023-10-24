@@ -1,6 +1,4 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import Mithril from 'mithril';
-import m from 'mithril';
 import { env } from '@/types/env';
 
 const url = 'https://llm-bot-api.vais.vn/api/v1/conversations';
