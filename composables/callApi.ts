@@ -117,7 +117,6 @@ export const conversationUserController = {
                     message,
                     headers: {
                         Authorization: `Bearer ${tokens.access.token}`,
-
                     },
                     params: {
                         conversationId,
