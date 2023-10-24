@@ -61,18 +61,10 @@
 </template>
 
 <script setup>
-import { login } from "@/composables/userChat";
 import { useStore } from "vuex";
 import { conversationUserController } from "@/composables/callApi";
 const store = useStore();
 
-// const props = defineProps({
-//     sendMessage: {
-//         typeof: String,
-//         default: '',
-
-//     },
-// })
 const messageInput = ref("");
 
 const listenInput = async (mess) => {
@@ -81,7 +73,5 @@ const listenInput = async (mess) => {
   await navigateTo(`chatAI/${post.record.id}`);
 };
 
-onMounted(async () => {
-  await login();
-});
+onMounted(async () => {});
 </script>

@@ -35,8 +35,8 @@
       <div class="title_first" v-if="index % 2 === 0">
         <!-- <div class="avt_cb">
           <img src="@/image/logo/connect_face.png" alt="" /> -->
-          <font-awesome-icon icon="fa-regular fa-circle-user" />
-          <span>{{ " " + mess.message }}</span>
+        <font-awesome-icon icon="fa-regular fa-circle-user" />
+        <span>{{ " " + mess.message }}</span>
         <!-- </div> -->
       </div>
 
@@ -162,7 +162,7 @@
             <div id="name_checkbox" class="name_checkbox">Copilot</div>
           </label>
         </button> -->
-        <button 
+        <button
           class="inp_buttom btn_arrow location-second"
           @click="listenInput(messageInput)"
         >
@@ -176,7 +176,6 @@
 <script setup lang="ts" allowJs="true">
 import { useStore } from "vuex";
 import { conversationUserController } from "@/composables/callApi";
-import { login } from "@/composables/userChat";
 import { mapDocName } from "@/types/ExchangeSymbol";
 
 const route = useRoute();
@@ -200,8 +199,8 @@ function showComponent(id) {
   return visibleComponents.value.includes(id);
 }
 
-const listenInput = async (mess) => {
-  const post = await conversationUserController.sendMessage(route.params.id, mess);
+const listenInput = (mess) => {
+  const post = conversationUserController.sendMessage(route.params.id, mess);
 };
 
 onMounted(async () => {
