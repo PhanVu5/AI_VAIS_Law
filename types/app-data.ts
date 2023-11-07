@@ -14,6 +14,9 @@ export const appData = {
     },
     conversationMessages: {
         list: {
+            filter: {
+                conversationId: null,
+            },
             items: [] as ConversationMessageRecord[],
         },
     },

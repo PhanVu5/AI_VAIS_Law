@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container_scroll">
     <div class="contain_header_dcv">
       <div class="header_discover box_dcv">
         <font-awesome-icon icon="fa-brands fa-stack-overflow" /><span> Library</span>
@@ -34,7 +34,7 @@
 <script setup lang="ts" allowJs>
 import { login } from "@/composables/userChat";
 import { conversationUserController } from "@/composables/callApi";
-import { appData } from "@/types/modules";
+import { appData } from "@/types/app-data";
 
 const list = ref([]);
 const listMessage = ref([]);
@@ -59,7 +59,5 @@ onMounted(async () => {
       async (item) => await conversationUserController.listMessage(item.id)
     )
   );
-  console.log("hjj", list);
-  console.log("hjj", list.value.items);
 });
 </script>

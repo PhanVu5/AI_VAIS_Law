@@ -1,5 +1,5 @@
 <template>
-  <div class="container_chatbox w-full">
+  <div class="container_chatbox container_scroll w-full">
     <div class="contain_head_cb">
       <div class="avt_cb">
         <img src="@/image/logo/connect_face.png" alt="" />
@@ -29,7 +29,7 @@
     <!-- ************************************************************************** -->
     <div
       class="content_cb box_dcv"
-      v-for="(mess, index) in listMessage.items"
+      v-for="(mess, index) in listMessage"
       :id="'fist_ask_chat' + index"
     >
       <div class="title_first" v-if="index % 2 === 0">
@@ -74,7 +74,10 @@
               ></QuickSearch>
             </div>
           </div>
-          <div class="paragraphs_answer">
+          <div
+            class="paragraphs_answer"
+            style="background: rgb(241 239 239); padding: 21px 15px; border-radius: 15px"
+          >
             <p>
               {{ mess.message }}
             </p>
@@ -177,13 +180,37 @@
 import { useStore } from "vuex";
 import { conversationUserController } from "@/composables/callApi";
 import { mapDocName } from "@/types/ExchangeSymbol";
+import { appData } from "@/types/app-data";
+import { ConversationMessageRecord } from "~/composables/types";
+import { soketiClient } from "@/types/socketi";
+// import { useStore } from "vuex";
 
+// const store = useStore();
 const route = useRoute();
 const store = useStore();
+const store_mess = ref({});
 const infoExchangeText = mapDocName;
 const listMessage = ref([]);
 const messageInput = ref("");
 const visibleComponents = ref([]);
+let checkMess = ref(false);
+
+onMounted(async () => {
+  await conversationUserController.listMessage(route.params.id);
+  listMessage.value = store.state.conversationMessages.list.items.filter(
+    (id) => id.conversationId === route.params.id
+  );
+});
+
+watch(checkMess, (newCheckMess) => {
+  console.log("watch aready");
+  newCheckMess = false;
+  setTimeout(() => {
+    listMessage.value = store.state.conversationMessages.list.items.filter(
+      (id) => id.conversationId === route.params.id
+    );
+  }, 500);
+});
 
 function toggleComponentById(id) {
   console.log("save", visibleComponents.value);
@@ -201,11 +228,6 @@ function showComponent(id) {
 
 const listenInput = (mess) => {
   const post = conversationUserController.sendMessage(route.params.id, mess);
+  checkMess = true;
 };
-
-onMounted(async () => {
-  listMessage.value = await conversationUserController.listMessage(route.params.id);
-  console.log("param");
-  console.log(listMessage);
-});
 </script>

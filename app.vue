@@ -6,5 +6,5 @@
 <script setup>
 import { useStore } from "vuex";
 const store = useStore();
-console.log(store.state.count);
+console.log("123", store.state.count);
 </script>

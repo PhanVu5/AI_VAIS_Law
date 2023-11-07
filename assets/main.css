@@ -248,11 +248,16 @@ body {
     border-radius: 12px;
     margin-top: 2px;
     background-color: var(--bg-ui-right);
-    overflow: auto;
+    overflow: hidden;
 }
 
 .container__home {
     margin-top: 6rem;
+}
+
+.container_scroll{
+    padding-bottom: 250px;
+    overflow: auto;
 }
 
 .title {
@@ -483,7 +488,6 @@ input:checked+.slider:before {
 
 .container_chatbox {
     position: relative;
-    min-height: 300%;
 }
 
 .contain_head_cb {
@@ -569,7 +573,7 @@ input:checked+.slider:before {
 .title_first {
     margin: -14px 0;
     margin-top: 80px;
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .css_title_cb {

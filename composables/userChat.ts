@@ -1,4 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { conversationUserController } from '@/composables/callApi';
+import {
+    ConversationMessageRecord
+} from '~/composables/types';
+import { soketiClient } from '@/types/socketi';
 import { env } from '@/types/env';
 
 const url = 'https://llm-bot-api.vais.vn/api/v1/conversations';
@@ -7,8 +12,8 @@ const API_HOST = env.VITE_API_HOST || "http://localhost:3000";
 
 async function login() {
     const res = await axios.post(
-        // `${API_HOST}/api/v2/auth/login`,
-        `https://llm-bot-api.vais.vn/api/v2/auth/login`,
+        `${API_HOST}/api/v2/auth/login`,
+        // `https://llm-bot-api.vais.vn/api/v2/auth/login`,
         {
             email: 'user@vais.vn',
             password: '12345678',
@@ -21,8 +26,12 @@ async function login() {
     localStorage.setItem('tokens', JSON.stringify(tokens));
     console.log('done token');
     
-    // const chatChannel = soketiClient.subscribe(`public-${user.id}`);
+    console.log('user', user.id);
+    const chatChannel = soketiClient.subscribe(`public-${user.id}`);
     // @ts-ignore
+    chatChannel.bind('chat-message', (data: ConversationMessageRecord) => {
+        conversationUserController.syncChatFromWebSocket(data)
+    });
 
 }
 

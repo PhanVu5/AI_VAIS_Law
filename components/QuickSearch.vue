@@ -12,5 +12,4 @@ const props = defineProps({
   },
 });
 const content = props.info.replace(/\n/g, "<br>");
-
 </script>

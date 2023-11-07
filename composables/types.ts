@@ -12,9 +12,10 @@ export type ConversationRecord = {
 };
 
 export type ConversationMessageRecord = {
+    _key: number;
     _id?: string | Schema.Types.ObjectId;
     id?: string | Schema.Types.ObjectId;
-    conversationId: Schema.Types.ObjectId;
+    conversationId: string | Schema.Types.ObjectId;
     streamStatus: 'end' | 'streaming';
     userId: Schema.Types.ObjectId;
     createdBy:
